@@ -1,5 +1,7 @@
 package io.motolola.algorithm.recursion;
 
+import org.springframework.lang.NonNull;
+
 import java.util.ArrayList;
 
 /**
@@ -7,8 +9,8 @@ import java.util.ArrayList;
  * email: motolola@icloud.com
  * This is about finding the Greatest Common Divisor of two given numbers
  * The first solution in mind is the
- * 1. Find all the divisors of both numbers in different lists
- * 2. Collect the common Elements in one list and return the highest.
+ *    1. Find all the divisors of both numbers in different lists
+ *    2. Collect the common Elements in one list and return the highest.
  * This is a long solution, but a solution ...
  * We will try this approach first.
  */
@@ -22,11 +24,12 @@ public class EuclideanGCD
         ArrayList<Integer> factor1 = factors(num1);
         ArrayList<Integer> factor2 = factors(num2);
 
-        ArrayList<Integer> commonFactors = commonElements(factor1, factor2);
-        System.out.println(commonFactors.get(commonFactors.size() - 1));
+        int commonFactors = commonElements(factor1, factor2);
+        System.out.println(commonFactors);
+        System.out.println(euclideanSolution(num1, num2));
     }
 
-    private static ArrayList<Integer> factors(int number)
+    private static ArrayList<Integer> factors(@NonNull int number)
     {
         ArrayList<Integer> factors = new ArrayList<>();
 
@@ -40,7 +43,7 @@ public class EuclideanGCD
         return factors;
     }
 
-    private static ArrayList<Integer> commonElements(ArrayList<Integer> arr1, ArrayList<Integer> arr2)
+    private static int commonElements(@NonNull ArrayList<Integer> arr1, @NonNull ArrayList<Integer> arr2)
     {
         ArrayList<Integer> arr = new ArrayList<>();
         for (Integer num : arr1)
@@ -51,7 +54,30 @@ public class EuclideanGCD
             }
         }
 
-        return arr;
+        return arr.get(arr.size() - 1);
     }
 
+    /*
+     * Short Solutions to Euclidean Algorithm -
+     * Finding Greatest Common Divisor ...
+     */
+    private static int euclideanSolution(@NonNull int num1, @NonNull int num2)
+    {
+        if (num1 == num2)
+        {
+            return num1;
+        }
+
+        if (num1 > num2)
+        {
+            num1 = num1 - num2;
+
+            return euclideanSolution(num2, num1);
+
+        } else
+        {
+            num2 = num2 - num1;
+            return euclideanSolution(num1, num2);
+        }
+    }
 }
