@@ -1,6 +1,9 @@
 package io.motolola.algorithm.recursion;
 
+import org.springframework.lang.NonNull;
+
 /**
+ * Recursion is slower than Iterative calls
  * Created by Akinjide Motolola.
  * email: motolola@icloud.com
  */
@@ -15,7 +18,7 @@ public class Factorial
         System.out.println(sumOfOdds(7));
     }
 
-    public static int factorial(final int number)
+    private static int factorial(@NonNull final int number)
     {
         if (number == 0)
         {
@@ -30,7 +33,7 @@ public class Factorial
     /*
      *To add every integer down to 1 from a given number
      */
-    public static int recursiveSum(final int number)
+    private static int recursiveSum(@NonNull final int number)
     {
         if (number == 0)
         {
@@ -44,7 +47,7 @@ public class Factorial
      * @param number
      * @return
      */
-    public static int sumOfOdds(int number)
+    private static int sumOfOdds(@NonNull int number)
     {
         if (number % 2 == 0) //Check for even number and reassign
         {
