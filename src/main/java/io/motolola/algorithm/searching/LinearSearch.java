@@ -14,7 +14,7 @@ public class LinearSearch
         System.out.println(findIndex(5, arr));
     }
 
-    public static int findIndex(int num, int[] arr)
+    private static int findIndex(int num, int[] arr)
     {
         for (int i = 0; i < arr.length; i++)
         {
