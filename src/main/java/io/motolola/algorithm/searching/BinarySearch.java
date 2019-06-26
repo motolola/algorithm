@@ -32,6 +32,5 @@ public class BinarySearch
         else {
             return find(middleIndex + 1, endIndex, arr, item);
         }
-
     }
 }
